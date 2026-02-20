@@ -1,0 +1,102 @@
+[
+    {
+        "id": 1,
+        "title": "Frontend Developer",
+        "deadline": "2026-03-01",
+        "mini": 500,
+        "max": 1000,
+        "description": "Looking for a React developer with Tailwind CSS experience.",
+        "category": "Graphics Design",
+        "image": "https://i.ibb.co.com/3YdmykDH/logo-designer-working-computer-desktop.jpg"
+    },
+    {
+        "id": 2,
+        "title": "UI/UX Designer",
+        "deadline": "2026-03-15",
+        "mini": 300,
+        "max": 700,
+        "description": "Design responsive user interfaces with Figma and Adobe XD.",
+        "category": "Graphics Design",
+        "image": "https://i.ibb.co.com/MDnDBghg/26979.jpg"
+    },
+    {
+        "id": 3,
+        "title": "Backend Developer",
+        "deadline": "2026-02-28",
+        "mini": 600,
+        "max": 1200,
+        "description": "Node.js and MongoDB experience required for RESTful APIs.",
+        "category": "Graphics Design",
+        "image": "https://i.ibb.co.com/bjPp3XSL/9015657.jpg"
+    },
+    {
+        "id": 4,
+        "title": "Mobile App Developer",
+        "deadline": "2026-04-01",
+        "mini": 700,
+        "max": 1500,
+        "description": "Build cross-platform apps using React Native or Flutter.",
+        "category": "Graphics Design",
+        "image": "https://i.ibb.co.com/g8D5b1d/28776.jpg"
+    },
+    {
+        "id": 5,
+        "title": "Digital Marketer",
+        "deadline": "2026-03-20",
+        "mini": 200,
+        "max": 600,
+        "description": "SEO, SEM, and social media marketing skills required.",
+        "category": "Digital Marketing",
+        "image": "https://i.ibb.co.com/CSCFQqP/man-suit-standing-office-with-clipboard-pointing-poster-with-words.jpg"
+    },
+    {
+        "id": 6,
+        "title": "Graphic Designer",
+        "deadline": "2026-03-10",
+        "mini": 250,
+        "max": 500,
+        "description": "Create visually appealing designs for web and print.",
+        "category": "Digital Marketing",
+        "image": "https://i.ibb.co.com/8gtt1KDn/influencer-marketing.jpg"
+    },
+    {
+        "id": 7,
+        "title": "Content Writer",
+        "deadline": "2026-02-25",
+        "mini": 100,
+        "max": 400,
+        "description": "Write engaging blog posts, articles, and website content.",
+        "category": "Digital Marketingg",
+        "image": "https://i.ibb.co.com/8gtt1KDn/influencer-marketing.jpg"
+    },
+    {
+        "id": 8,
+        "title": "Full Stack Developer",
+        "deadline": "2026-03-05",
+        "mini": 800,
+        "max": 1600,
+        "description": "Looking for a full stack developer with MERN stack skills.",
+        "category": "Web Development",
+        "image": "https://i.ibb.co.com/jCvrw9q/male-system-hacker-coding-security-program-pc-software-programming-firewall-data-encryption-server-u.jpg"
+    },
+    {
+        "id": 9,
+        "title": "Project Manager",
+        "deadline": "2026-04-10",
+        "mini": 500,
+        "max": 1200,
+        "description": "Manage software development projects and teams efficiently.",
+        "category": "Web Development",
+        "image": "https://i.ibb.co.com/mCZnY1fg/164.jpg"
+    },
+    {
+        "id": 10,
+        "title": "Video Editor",
+        "deadline": "2026-03-18",
+        "mini": 150,
+        "max": 500,
+        "description": "Edit promotional videos and social media clips professionally.",
+        "category": "Web Development",
+        "image": "https://i.ibb.co.com/0R3mMYJ7/frontend-text-2.jpg"
+    }
+]

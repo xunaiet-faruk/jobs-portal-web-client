@@ -3,12 +3,15 @@ import { motion } from "framer-motion";
 import { FaEye, FaEdit, FaTrash } from "react-icons/fa";
 import Useaxios from "../Hooks/Useaxios";
 import { Authcontext } from "../context/Authcontext";
+import Updatejob from "./Updatejob";
 
 const Myjobs = () => {
     const axios = Useaxios();
     const [jobs, setJobs] = useState([]);
     const {user,loading} =use(Authcontext)
     const [fetching, setFetching] = useState(false);
+    const [modalOpen, setModalOpen] = useState(false);
+    const [selectedJob, setSelectedJob] = useState(null);
     useEffect(() => {
         const MyjobInfo = async () => {
             if (!user?.email) return;
@@ -28,10 +31,18 @@ const Myjobs = () => {
     }, [axios,user?.email]);
 
     if(loading || fetching){
-        <div className="min-h-screen flex items-center justify-center">
-            <span className="loading loading-infinity loading-xl w-[50px]"></span>
-        </div>
+       return (
+           <div className="min-h-screen flex items-center justify-center">
+               <span className="loading loading-infinity text-[#fa4c4c] loading-xl w-[50px]"></span>
+           </div>
+       )
     }
+
+
+    const handleUpdateClick = (job) => {
+        setSelectedJob(job);
+        setModalOpen(true);
+    };
 
     return (
         <div className="min-h-screen backdrop-blur-lg bg-white/70 py-16 px-4">
@@ -85,7 +96,10 @@ const Myjobs = () => {
 
                         
                             <div className="mt-6 flex gap-3">
-                                <button className="flex-1 flex items-center justify-center gap-2  border-b-2 border-purple-500  py-2 rounded-lg hover:bg-purple-600 cursor-pointer hover:text-white transition duration-300">
+                                <button
+                                    className="flex-1 flex items-center justify-center gap-2 border-b-2 border-purple-500 py-2 rounded-lg hover:bg-purple-600 cursor-pointer hover:text-white transition duration-300"
+                                    onClick={() => handleUpdateClick(job)}
+                                >
                                     <FaEdit /> Update
                                 </button>
 
@@ -98,6 +112,13 @@ const Myjobs = () => {
                     </motion.div>
                 ))}
             </div>
+
+            <Updatejob
+                isOpen={modalOpen}
+                onClose={() => setModalOpen(false)}
+                jobData={selectedJob}
+                onUpdate={(data) => console.log("Updated job data:", data)}
+            />
         </div>
     );
 };

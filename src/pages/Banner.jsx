@@ -16,7 +16,6 @@ const Banner = () => {
                     />
                
                 </h1>
-
                
                 <p className="mt-4 text-md md:text-md font-poppins text-gray-400">Explore  thousands of jobs across Web Development, Digital Marketing, and Graphic Design.<br/> Post your projects or bid on jobs today – all in one place!                </p>
                <div className="flex justify-center mt-8">
