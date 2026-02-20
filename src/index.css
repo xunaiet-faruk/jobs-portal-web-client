@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Tapestry&display=swap');
+
+.active{
+    color: #fa4c4c;
+    text-decoration: underline;
+    font-size: 14px;
+    font-weight: bold;
+   
+}
+
+.font{
+    
+            font-family: "Playfair Display", serif;
+            font-optical-sizing: auto;
+            font-weight: 700;
+            font-style: normal;
+        
+}
