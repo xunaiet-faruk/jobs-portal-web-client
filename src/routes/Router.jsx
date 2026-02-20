@@ -7,6 +7,7 @@ import Homepages from "../layout/Homepages";
 import Login from "../Authentication/Login";
 import Register from "../Authentication/Register";
 import Addjobs from "../pages/Addjobs";
+import Myjobs from "../pages/Myjobs";
 
 export const router = createBrowserRouter([
     {
@@ -28,7 +29,11 @@ export const router = createBrowserRouter([
             {
                 path:'/add-job',
                 element:<Addjobs/>
-            }
+            },
+            {
+                path:'/myjobs',
+                element:<Myjobs/>
+            },
         ]
     },
 ]);
