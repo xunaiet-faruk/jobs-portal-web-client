@@ -37,7 +37,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/jobdetails/:id',
-                loader: async ({ params }) => fetch(`http://localhost:3000/category/${params.id}`),
+                
                 element:<Jobdetails/>
             },
         ]
