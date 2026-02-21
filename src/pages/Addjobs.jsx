@@ -13,11 +13,12 @@ const Addjobs = () => {
         const email =form.email.value
         const title =form.title.value
         const date =form.date.value
+        const image= form.image.value
         const description =form.description.value
         const categor =form.category.value
         const mini =form.mini.value
         const max =form.max.value
-        const allInfo = { email, title, date, description, categor, mini, max }
+        const allInfo = { email, title, date, description, categor, mini, max, image }
         console.log(allInfo);
         const result = await axios.post("/jobpost",allInfo)
         if (result.data.insertedId){
@@ -78,6 +79,17 @@ const Addjobs = () => {
                             <input
                                 type="date"
                                 name='date'
+                                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-300"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-gray-700 font-semibold mb-2">
+                                Job Image
+                            </label>
+                            <input
+                                type="url"
+                                name='image'
+                                placeholder='Paste  image link'
                                 className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-300"
                             />
                         </div>

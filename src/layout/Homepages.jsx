@@ -8,12 +8,12 @@ import Useaxios from '../Hooks/Useaxios';
 const Homepages = () => {
     const [selectCategory, setSelectcategory] = useState("All")
     const [jobsData, setJobsData] = useState([]);
-    const categories = ["All", "Web Development", "Digital Marketing", "Graphics Design"];
-    const axios =Useaxios()
+    const categories = ["All", "Web Development", "Digital Marketing", "Graphic Design"];
+    const axios = Useaxios()
     useEffect(() => {
         const fetchJobs = async () => {
             try {
-                const res = await axios.get('/category');
+                const res = await axios.get('/jobpost');
                 console.log(res.data);
                 setJobsData(res.data);
             } catch (err) {
@@ -21,7 +21,7 @@ const Homepages = () => {
             }
         };
         fetchJobs();
-    }, []);
+    }, [axios]);
     return (
         <div>
             <Banner />
@@ -36,7 +36,7 @@ const Homepages = () => {
                                 ? "bg-[#fa4c4c] text-white rounded-full"
                                 : "hover:bg-[#fa4c4c] hover:text-white"}  
                              `}
-                         >
+                    >
                         {cat}
                     </button>
                 ))}

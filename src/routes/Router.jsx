@@ -8,6 +8,7 @@ import Login from "../Authentication/Login";
 import Register from "../Authentication/Register";
 import Addjobs from "../pages/Addjobs";
 import Myjobs from "../pages/Myjobs";
+import Jobdetails from "../component/Homepages/Jobdetails";
 
 export const router = createBrowserRouter([
     {
@@ -33,6 +34,11 @@ export const router = createBrowserRouter([
             {
                 path:'/myjobs',
                 element:<Myjobs/>
+            },
+            {
+                path:'/jobdetails/:id',
+                loader: async ({ params }) => fetch(`http://localhost:3000/category/${params.id}`),
+                element:<Jobdetails/>
             },
         ]
     },

@@ -1,11 +1,18 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaClock, FaDollarSign } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const JobsCard = ({ jobs, selectCategory }) => {
-    
-    const filterTabs = selectCategory === "All" ? jobs : jobs.filter(job => job.category === selectCategory)
-
+    const navigate =useNavigate()
+    const filterTabs = selectCategory === "All"
+        ? jobs
+        : jobs.filter(job => job.categor === selectCategory);
+        
+        
+        const handleDetails =(id) =>{
+            navigate(`/jobdetails/${id}`)
+        }
 
     return (
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mb-12 gap-4">
@@ -25,17 +32,16 @@ const JobsCard = ({ jobs, selectCategory }) => {
                                 </h2>
                                 <span
                                     className={`text-sm md:text-sm px-2  rounded-full font-medium text-white
-                                 ${job?.category === "Web Development"
+                                 ${job?.categor === "Web Development"
                                         ? "bg-gradient-to-r from-[#ae3232] to-[#e66e2d] "
-                                            : job?.category === "Digital Marketing"
+                                            : job?.categor === "Digital Marketing"
                                             ? "bg-gradient-to-r from-[#25ba9f] to-[#39e7c7]"
-                                                : job?.category === "Graphics Design"
+                                            : job?.categor === "Graphic Design"
                                                 ? "bg-gradient-to-r from-[#fa4c4c]  to-purple-500"
                                                     : "bg-gray-400"
-                                        }
-  `}
+                                        }`}
                                 >
-                                    {job?.category }
+                                    {job?.categor }
                                 </span>
                             </div>
 
@@ -55,7 +61,7 @@ const JobsCard = ({ jobs, selectCategory }) => {
                             </p>
 
                             {/* Bid Now Button */}
-                            <motion.button
+                            <motion.button onClick={() =>handleDetails(job._id)}
                                 whileHover={{ scale: 1.05 }}
                                 className="w-full py-2 rounded-xl  font-semibold  border-b-2 hover:bg-purple-500 hover:text-white border-purple-500  transition-all duration-300"
                             >

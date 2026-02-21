@@ -4,7 +4,7 @@ import Typical from 'react-typical';
 
 const Banner = () => {
     return (
-        <div className="h-screen text-black flex items-center justify-center">
+        <div className="h-screen text-black flex items-center justify-center -mt-12">
             <div className="text-center px-4">
                 <h1 className="text-5xl md:text-6xl font font-bold">
                     Your Marketplace for Freelance<br/> <span className='text-[#fa4c4c]'>Opportunities </span> 

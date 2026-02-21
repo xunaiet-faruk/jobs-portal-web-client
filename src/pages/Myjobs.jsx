@@ -78,7 +78,7 @@ const Myjobs = () => {
                             <div className="flex justify-between items-center">
                                 <h2 className="text-xl font-bold">{job.title}</h2>
                                 <span className="border-b border-[#fa4c4c] font-semibold text-xs px-3 py-1 rounded-full">
-                                    {job.categor}
+                                    {job.category}
                                 </span>
                             </div>
 
