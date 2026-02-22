@@ -9,6 +9,7 @@ import Register from "../Authentication/Register";
 import Addjobs from "../pages/Addjobs";
 import Myjobs from "../pages/Myjobs";
 import Jobdetails from "../component/Homepages/Jobdetails";
+import Mybids from "../pages/Mybids";
 
 export const router = createBrowserRouter([
     {
@@ -37,8 +38,11 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/jobdetails/:id',
-                
                 element:<Jobdetails/>
+            },
+            {
+                path:'/mybids',
+                element:<Mybids/>
             },
         ]
     },

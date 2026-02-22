@@ -4,10 +4,12 @@ import { motion } from "framer-motion";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import Useaxios from "../../Hooks/Useaxios";
 import { useEffect, useState } from "react";
+import Bidrequest from "../../pages/Bidrequest";
 
 const Jobdetails = () => {
 
     const [job, setJob] = useState(null)
+    const [showForm, setShowForm] = useState(false);
     const {id} = useParams()
     const navigate =useNavigate()
 
@@ -22,8 +24,7 @@ const Jobdetails = () => {
         }
         fetthJob();
 
-    },[axios,id])
-    console.log(id);
+    },[axios,id]);
 
     if (!job) return <p className="text-center mt-10">Loading...</p>;
 
@@ -32,6 +33,10 @@ const Jobdetails = () => {
     const handleBack=()=>{
         navigate(-1)
     }
+
+    const handleBook = () => {
+        setShowForm(true);
+    };
 
     return (
 
@@ -48,7 +53,6 @@ const Jobdetails = () => {
                 >
 
 
-                    {/* Image Side */}
 
                     <div className="overflow-hidden">
 
@@ -107,7 +111,7 @@ const Jobdetails = () => {
 
 
 
-                        {/* Salary */}
+                
 
                         <div className="flex items-center gap-4 bg-gray-100 p-4 rounded-xl">
 
@@ -133,7 +137,6 @@ const Jobdetails = () => {
 
 
 
-                        {/* Deadline */}
 
                         <div className="flex items-center gap-4 bg-gray-100 p-4 rounded-xl">
 
@@ -159,7 +162,6 @@ const Jobdetails = () => {
 
 
 
-                        {/* Description */}
 
                         <div>
 
@@ -179,21 +181,19 @@ const Jobdetails = () => {
 
 
 
-                        {/* Button */}
+              
+                    <motion.button
+                        onClick={handleBook}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: .95 }}
+                        className="w-full py-3 text-white bg-gradient-to-r from-purple-600 to-pink-500 rounded-xl"
+                    >
+                        Apply Now 🚀
+                    </motion.button>
 
-                        <motion.button
-
-                            whileHover={{ scale: 1.05 }}
-
-                            whileTap={{ scale: .95 }}
-
-                            className="w-full py-3  text-white bg-gradient-to-r from-purple-600 to-pink-500 hover:scale-105 transform transition duration-300 shadow-lg rounded-xl font-semibold shadow-lg"
-
-                        >
-
-                            Apply Now 🚀
-
-                        </motion.button>
+                    {
+                        showForm && <Bidrequest job={job} closeModal={() => setShowForm(false)} />
+                    }
 
 
 
