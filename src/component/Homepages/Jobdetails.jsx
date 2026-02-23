@@ -3,12 +3,14 @@ import { FaMoneyBillWave, FaClock, FaLayerGroup } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import Useaxios from "../../Hooks/Useaxios";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import Bidrequest from "../../pages/Bidrequest";
+import { Authcontext } from "../../context/Authcontext";
 
 const Jobdetails = () => {
 
     const [job, setJob] = useState(null)
+    const {user} =use(Authcontext)
     const [showForm, setShowForm] = useState(false);
     const {id} = useParams()
     const navigate =useNavigate()
@@ -35,8 +37,15 @@ const Jobdetails = () => {
     }
 
     const handleBook = () => {
-        setShowForm(true);
+        if (!user) {
+          
+            navigate("/login");
+        } else {
+            
+            setShowForm(true);
+        }
     };
+
 
     return (
 

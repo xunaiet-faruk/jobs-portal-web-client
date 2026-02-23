@@ -50,7 +50,7 @@ const Navbar = () => {
                    {user ? 
                         <div className="dropdown dropdown-hover dropdown-bottom dropdown-end">
                            
-                            <img className='w-14 rounded-full bg-gray-100 p-1' src={user ?. photoURL} alt="" />
+                            <img className='w-14 rounded-full bg-gray-100 p-1 animate-pulse' src={user ?. photoURL} alt="" />
                             
                             <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
                                 <li><button onClick={hadleLogout} className='text-red-500 hover:bg-red-400  hover:text-white'>Logoute</button></li>

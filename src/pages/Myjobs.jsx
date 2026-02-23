@@ -71,7 +71,7 @@ const Myjobs = () => {
             if (res.data.modifiedCount) {
                 Swal.fire("Success", "Job updated!", "success");
                 setJobs(prev => prev.map(job => job._id === data._id ? { ...job, ...data } : job));
-                setModalOpen(false);
+                setModalOpen(false); 
             }
         } catch (err) {
             console.error(err);

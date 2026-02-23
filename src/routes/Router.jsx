@@ -11,6 +11,7 @@ import Myjobs from "../pages/Myjobs";
 import Jobdetails from "../component/Homepages/Jobdetails";
 import Mybids from "../pages/Mybids";
 import Owneraction from "../pages/Owneraction";
+import Privateroute from "./Privateroute";
 
 export const router = createBrowserRouter([
     {
@@ -31,11 +32,11 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/add-job',
-                element:<Addjobs/>
+                element: <Privateroute><Addjobs /></Privateroute>
             },
             {
                 path:'/myjobs',
-                element:<Myjobs/>
+                element: <Privateroute><Myjobs /></Privateroute>
             },
             {
                 path:'/jobdetails/:id',
@@ -43,11 +44,11 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/mybids',
-                element:<Mybids/>
+                element: <Privateroute><Mybids /></Privateroute>
             },
             {
                 path:'/request',
-                element:<Owneraction/>
+                element: <Privateroute><Owneraction /></Privateroute>
             },
         ]
     },
