@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link,  NavLink } from 'react-router-dom';
+import { Authcontext } from '../../context/Authcontext';
 
 const Navbar = () => {
+    const { user, logout } =use(Authcontext)
+
+    const hadleLogout =()=>{
+        logout(()=>{})
+    }
+
     const links = (
         <>
             <NavLink className="mx-4" to="/">Home</NavLink>
@@ -40,9 +47,19 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link className="border text-white px-6 py-1 rounded-2xl font-semibold bg-[#fa4c4c]" to={"/login"}>
+                   {user ? 
+                        <div className="dropdown dropdown-hover dropdown-bottom dropdown-end">
+                           
+                            <img className='w-14 rounded-full bg-gray-100 p-1' src={user ?. photoURL} alt="" />
+                            
+                            <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                                <li><button onClick={hadleLogout} className='text-red-500 hover:bg-red-400  hover:text-white'>Logoute</button></li>
+                               
+                            </ul>
+                        </div> :
+                   <Link className="border text-white px-6 py-1 rounded-2xl font-semibold bg-[#fa4c4c]" to={"/login"}>
                     Login
-                    </Link>
+                    </Link>}
                 </div>
             </div>
         </div>

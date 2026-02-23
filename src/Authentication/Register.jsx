@@ -5,29 +5,43 @@ import { Authcontext } from '../context/Authcontext';
 import Swal from 'sweetalert2';
 
 const Register = () => {
-      
-    const { Register, google } =use(Authcontext)
-    const HandleRegister =e=>{
-        e.preventDefault()
-        const form=e.target;
-        const name =form.name.value;
-        const password =form.password.value;
-        const email =form.email.value;
-        const photo =form.photo.value;
-        const Allinfo ={name,email,password,photo}
-        console.log(Allinfo);
-        Register(email,password)
-        .then(result => {
-            if(result){
-                Swal.fire({
-                    title: "Your Register success",
-                    icon: "success",
-                    draggable: true
-                });
-            }
-        })
+    const { Register, google, updateUser } = use(Authcontext)
 
-    
+    const HandleRegister = async (e) => {
+
+        e.preventDefault()
+
+        const form = e.target;
+
+        const name = form.name.value;
+        const password = form.password.value;
+        const email = form.email.value;
+        const photo = form.photo.value;
+
+        try {
+
+            const result = await Register(email, password)
+
+            await updateUser(name, photo)
+
+            await result.user.reload() // ⭐ important
+
+            Swal.fire({
+                title: "Register Success ✅",
+                icon: "success"
+            });
+
+        }
+        catch (error) {
+
+            Swal.fire({
+                title: "Error ❌",
+                text: error.message,
+                icon: "error"
+            });
+
+        }
+
     }
 
     const handleGoogle =()=>{
