@@ -4,6 +4,7 @@ import { FaEye, FaEdit, FaTrash } from "react-icons/fa";
 import Useaxios from "../Hooks/Useaxios";
 import { Authcontext } from "../context/Authcontext";
 import Updatejob from "./Updatejob";
+import Swal from "sweetalert2";
 
 const Myjobs = () => {
     const axios = Useaxios();
@@ -38,6 +39,46 @@ const Myjobs = () => {
        )
     }
 
+    const hanldeDelete = async (job) => {
+
+        const confirm = await Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        })
+
+        if (confirm.isConfirmed) {
+
+            await axios.delete(`/jobpost/${job}`)
+
+            Swal.fire("Deleted!", "Job removed", "success")
+            setJobs(delet =>{
+                delet.filter(job => job._id !== job)
+            })
+
+        }
+
+    }
+
+
+    const handleUpdate = async (data) => {
+        try {
+            const res = await axios.patch(`/jobpost/${data._id}`, data);
+            if (res.data.modifiedCount) {
+                Swal.fire("Success", "Job updated!", "success");
+                setJobs(prev => prev.map(job => job._id === data._id ? { ...job, ...data } : job));
+                setModalOpen(false);
+            }
+        } catch (err) {
+            console.error(err);
+            Swal.fire("Error", "Failed to update job", "error");
+        }
+    };
+
 
     const handleUpdateClick = (job) => {
         setSelectedJob(job);
@@ -60,7 +101,7 @@ const Myjobs = () => {
             </div>
 
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 ">
-                {jobs.map((job) => (
+                {jobs?.map((job) => (
                     <motion.div
                         key={job._id}
                         whileHover={{ scale: 1.04 }}
@@ -103,7 +144,7 @@ const Myjobs = () => {
                                     <FaEdit /> Update
                                 </button>
 
-                                <button className="flex-1 flex items-center justify-center gap-2 border-b border-[#f53c3c] hover:bg-[#f53c3c]  hover:text-white cursor-pointer py-2 rounded-lg hover:bg-red-600 transition duration-300">
+                                <button onClick={() =>hanldeDelete(job._id)} className="flex-1 flex items-center justify-center gap-2 border-b border-[#f53c3c] hover:bg-[#f53c3c]  hover:text-white cursor-pointer py-2 rounded-lg hover:bg-red-600 transition duration-300">
                                     <FaTrash /> Delete
                                 </button>
                             </div>
@@ -117,7 +158,7 @@ const Myjobs = () => {
                 isOpen={modalOpen}
                 onClose={() => setModalOpen(false)}
                 jobData={selectedJob}
-                onUpdate={(data) => console.log("Updated job data:", data)}
+                onUpdate={handleUpdate}
             />
         </div>
     );
