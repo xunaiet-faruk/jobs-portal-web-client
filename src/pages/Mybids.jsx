@@ -29,8 +29,8 @@ const MyBids = () => {
     };
 
     return (
-        <div className="max-w-6xl mx-auto mt-10 mb-10">
-            <h1 className="text-3xl font-bold text-center mb-8">My Bids</h1>
+        <div className="max-w-6xl mx-auto mt-10 mb-20">
+            <h1 className="text-3xl font-bold text-center mb-8">My  <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500">Bids</span></h1>
             <div className="overflow-x-auto">
                 <table className="table w-full border">
                     <thead className="bg-gradient-to-r from-purple-600 to-pink-500 text-white">

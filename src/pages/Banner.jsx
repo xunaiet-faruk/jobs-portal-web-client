@@ -1,35 +1,45 @@
-import React from 'react';
-import { FiSearch } from 'react-icons/fi';
-import Typical from 'react-typical';
+import React from "react";
+import { FiSearch } from "react-icons/fi";
+import Typical from "react-typical";
 
 const Banner = () => {
     return (
-        <div className="h-screen text-black flex items-center justify-center -mt-12">
-            <div className="text-center px-4">
-                <h1 className="text-5xl md:text-6xl font font-bold">
-                    Your Marketplace for Freelance<br /> <span className='text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500'>Opportunities </span> 
-               
+        <div className="bg-white text-black flex items-center mb-20 justify-center py-20 px-4 md:px-8 lg:px-16">
+            <div className="text-center max-w-4xl w-full">
+                {/* Heading */}
+                <h1 className="text-4xl  md:text-5xl lg:text-6xl font ">
+                    Your Marketplace for Freelance
+                    <br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500">
+                        Opportunities{" "}
+                    </span>
                     <Typical
-                        steps={['Find the Perfect Job', 2000, 'Hire the Best Talent', 2000]}
+                        steps={["Find the Perfect Job", 2000, "Hire the Best Talent", 2000]}
                         loop={Infinity}
                         wrapper="span"
                     />
-               
                 </h1>
-               
-                <p className="mt-4 text-md md:text-md font-poppins text-gray-400">Explore  thousands of jobs across Web Development, Digital Marketing, and Graphic Design.<br/> Post your projects or bid on jobs today – all in one place!                </p>
-               <div className="flex justify-center mt-8">
-                <div className="flex w-full max-w-2xl">
-                    <input
-                        type="text"
-                        placeholder="Search jobs, categories or skills..."
-                            className="flex-grow px-4 py-3 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#fa4c4c] text-gray-700"
-                    />
-                        <button className="bg-[#fa4c4c] hover:bg-[#71b6af] px-4 rounded-r-lg flex items-center justify-center">
-                        <FiSearch className="text-white text-xl" />
-                    </button>
+
+                {/* Subheading */}
+                <p className="mt-4 text-sm sm:text-md md:text-lg text-gray-500 leading-relaxed">
+                    Explore thousands of jobs across Web Development, Digital Marketing, and Graphic Design.
+                    <br />
+                    Post your projects or bid on jobs today – all in one place!
+                </p>
+
+                {/* Search Bar */}
+                <div className="flex justify-center mt-8">
+                    <div className="flex flex-col sm:flex-row w-full max-w-2xl gap-2 sm:gap-0">
+                        <input
+                            type="text"
+                            placeholder="Search jobs, categories or skills..."
+                            className="flex-grow px-4 py-3 rounded-lg sm:rounded-r-none border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#fa4c4c] text-gray-700 transition duration-300"
+                        />
+                        <button className="mt-2 sm:mt-0 sm:ml-0 sm:rounded-l-none rounded-lg sm:rounded-r-lg text-white bg-gradient-to-r from-purple-600 to-pink-500 hover:scale-105 transform transition duration-300 shadow-lg flex items-center justify-center px-4 py-3">
+                            <FiSearch className="text-white text-xl" />
+                        </button>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
     );

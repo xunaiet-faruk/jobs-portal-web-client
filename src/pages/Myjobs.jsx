@@ -90,7 +90,7 @@ const Myjobs = () => {
 
             <div className="text-center mb-14">
                 <h1 className="text-4xl font-bold">
-                    My Posted <span className="text-[#fa4c4c]">Jobs
+                    My Posted <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500">Jobs
                        
                     </span>
                 </h1>

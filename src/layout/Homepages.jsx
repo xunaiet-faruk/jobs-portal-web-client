@@ -46,10 +46,10 @@ const Homepages = () => {
                         key={cat}
                         onClick={() => setSelectcategory(cat)}
                         className={`
-                            border-b-2 border-[#fa4c4c] rounded-xl px-5 py-1 font cursor-pointer transition-all duration-300
+                            border-b-2 border-purple-600 rounded-xl px-5 py-1 font cursor-pointer transition-all duration-300
                               ${selectCategory === cat
-                                ? "bg-[#fa4c4c] text-white rounded-full"
-                                : "hover:bg-[#fa4c4c] hover:text-white"}  
+                            ? "text-white bg-gradient-to-r from-purple-600 to-pink-500 hover:scale-105 transform transition duration-300 shadow-lg rounded-full"
+                                : "hover:bg-pink-500 hover:text-white"}  
                              `}
                     >
                         {cat}
