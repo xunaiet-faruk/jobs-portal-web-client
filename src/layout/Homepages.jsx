@@ -3,7 +3,9 @@ import Banner from '../pages/Banner';
 import CategoriesJobs from '../component/CategoriesJobs';
 import JobsCard from '../component/Homepages/JobsCard';
 import Useaxios from '../Hooks/Useaxios';
-
+import OportunitySection from '../component/OportunitySection';
+import WhyChooseSection from '../component/WhyChooseSection';
+import { motion } from "framer-motion";
 
 const Homepages = () => {
     const [selectCategory, setSelectcategory] = useState("All")
@@ -25,6 +27,19 @@ const Homepages = () => {
     return (
         <div>
             <Banner />
+            <motion.h2
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-4xl md:text-5xl font text-center  text-gray-800"
+            >
+                Browse Jobs By  <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500">Categories</span>?
+            </motion.h2>
+
+
+
+
+
             <div className='mt-12 flex justify-center items-center gap-8 mb-12'>
                 {categories.map(cat => (
                     <button
@@ -41,7 +56,15 @@ const Homepages = () => {
                     </button>
                 ))}
             </div>
+
+
+
+
+
             <JobsCard jobs={jobsData} selectCategory={selectCategory} />
+
+            <OportunitySection/>
+            <WhyChooseSection/>
         </div>
     );
 };

@@ -7,7 +7,7 @@ const Banner = () => {
         <div className="h-screen text-black flex items-center justify-center -mt-12">
             <div className="text-center px-4">
                 <h1 className="text-5xl md:text-6xl font font-bold">
-                    Your Marketplace for Freelance<br/> <span className='text-[#fa4c4c]'>Opportunities </span> 
+                    Your Marketplace for Freelance<br /> <span className='text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500'>Opportunities </span> 
                
                     <Typical
                         steps={['Find the Perfect Job', 2000, 'Hire the Best Talent', 2000]}
