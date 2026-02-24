@@ -56,7 +56,7 @@ const OportunitySection = () => {
                     className="md:w-1/2 flex justify-center"
                 >
                     <motion.img
-                        src="/hero2.png"
+                        src="/hero-image.png"
                         alt="Job Opportunities"
                         className="w-full max-w-md md:max-w-lg rounded-xl  hover:scale-105 transition-transform duration-500"
                         whileHover={{ scale: 1.05 }}

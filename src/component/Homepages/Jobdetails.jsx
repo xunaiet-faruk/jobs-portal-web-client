@@ -6,6 +6,7 @@ import Useaxios from "../../Hooks/Useaxios";
 import { use, useEffect, useState } from "react";
 import Bidrequest from "../../pages/Bidrequest";
 import { Authcontext } from "../../context/Authcontext";
+import Swal from "sweetalert2";
 
 const Jobdetails = () => {
 
@@ -40,10 +41,21 @@ const Jobdetails = () => {
         if (!user) {
           
             navigate("/login");
-        } else {
-            
-            setShowForm(true);
         }
+         if(user.email === job.email){
+            
+                        Swal.fire({
+                            title: "Error ❌",
+                            text: "You Are Owner this job",
+                            icon: "error"
+                        });
+             
+         }else{
+             setShowForm(true);
+         }
+            
+           
+        
     };
 
 
@@ -193,11 +205,20 @@ const Jobdetails = () => {
               
                     <motion.button
                         onClick={handleBook}
+                        disabled={user?.email === job?.email}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: .95 }}
-                        className="w-full py-3 text-white bg-gradient-to-r from-purple-600 to-pink-500 rounded-xl"
+                        className={`w-full py-3 text-white rounded-xl
+                                ${user?.email === job?.email
+                                ? "bg-gray-400 cursor-not-allowed"
+                                : "bg-gradient-to-r from-purple-600 to-pink-500"
+                            }`}
                     >
-                        Apply Now 🚀
+                        {
+                            user?.email === job?.email
+                                ? "Your Job"
+                                : "Apply Now 🚀"
+                        }
                     </motion.button>
 
                     {
