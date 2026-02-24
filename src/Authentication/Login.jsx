@@ -1,12 +1,16 @@
 import React, { use } from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Authcontext } from '../context/Authcontext';
 import Swal from 'sweetalert2';
 
 const Login = () => {
     const { Login, google } =use(Authcontext)
 
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const navigateRoute =location.state?.from?.pathname || "/";
     const handleSubmit =e=>{
         e.preventDefault()
         const form =e.target;
@@ -20,6 +24,7 @@ const Login = () => {
                             icon: "success",
                             draggable: true
                         });
+                        navigate(navigateRoute)
                     }
                 })
 
@@ -36,6 +41,8 @@ const Login = () => {
                         draggable: true
                     });
                 }
+
+                navigate(navigateRoute)
             })
 
     }

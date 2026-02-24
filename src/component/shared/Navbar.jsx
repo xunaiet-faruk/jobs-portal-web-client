@@ -1,7 +1,7 @@
 import React, { use } from 'react';
 import { Link,  NavLink } from 'react-router-dom';
 import { Authcontext } from '../../context/Authcontext';
-
+import { motion } from "framer-motion"
 const Navbar = () => {
     const { user, logout } =use(Authcontext)
 
@@ -50,8 +50,24 @@ const Navbar = () => {
                    {user ? 
                         <div className="dropdown dropdown-hover dropdown-bottom dropdown-end">
                            
-                            <img className='w-14 rounded-full bg-gray-100 p-1 animate-pulse' src={user ?. photoURL} alt="" />
                             
+                            <motion.div
+
+                                animate={{ y: [0, -5, 0] }}
+
+                                transition={{
+                                    duration: 2,
+                                    repeat: Infinity
+                                }}
+
+                                className="mb-4"
+
+                            >
+
+                                <img className='w-14 rounded-full bg-gray-100 p-1 animate-pulse' src={user?.photoURL} alt="" />
+
+
+                            </motion.div>
                             <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
                                 <li><button onClick={hadleLogout} className='text-red-500 hover:bg-red-400  hover:text-white'>Logoute</button></li>
                                

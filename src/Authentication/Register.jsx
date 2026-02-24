@@ -1,12 +1,17 @@
 import React, { use } from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Authcontext } from '../context/Authcontext';
 import Swal from 'sweetalert2';
 
 const Register = () => {
     const { Register, google, updateUser } = use(Authcontext)
 
+    const navigate = useNavigate();
+
+    const location = useLocation();
+
+    const navigateRoute = location.state?.from?.pathname || "/";
     const HandleRegister = async (e) => {
 
         e.preventDefault()
@@ -24,12 +29,14 @@ const Register = () => {
 
             await updateUser(name, photo)
 
-            await result.user.reload() // ⭐ important
+            await result.user.reload() 
 
             Swal.fire({
-                title: "Register Success ✅",
+                title: "Register Success",
                 icon: "success"
             });
+
+            navigate(navigateRoute);
 
         }
         catch (error) {
@@ -55,6 +62,8 @@ const Register = () => {
                     });
                 }
             })
+
+        navigate(navigateRoute)
     }
     return (
         <div>
