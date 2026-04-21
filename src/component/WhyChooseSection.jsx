@@ -51,11 +51,11 @@ const WhyChooseSection = () => {
                 className="text-3xl sm:text-4xl md:text-5xl font text-center pb-12 text-gray-800"
             >
 
-                Why Choose
+                Why Choose 
 
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500">
+                <span className="text-transparent bg-clip-text pl-3 bg-gradient-to-r from-purple-600 to-pink-500">
 
-                    JobsPortal
+                     JobsPortal
 
                 </span>
 

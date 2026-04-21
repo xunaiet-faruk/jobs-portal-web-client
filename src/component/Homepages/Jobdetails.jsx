@@ -18,18 +18,24 @@ const Jobdetails = () => {
 
     const axios =Useaxios()
 
-    useEffect(()=>{
+    useEffect(() => {
+        const fetchJob = async () => {
+            if (!id) return;
+            try {
+                const res = await axios.get(`/jobpost/${id}`);
+                setJob(res.data);
+            } catch (err) {
+                console.log("Error fetching job details:", err);
+            }
+        };
+        fetchJob();
+    }, [axios, id]);
 
-        const fetthJob =async() =>{
-            const res = await axios(`/jobpost/${id}`)
-            setJob(res.data)
-            
-        }
-        fetthJob();
-
-    },[axios,id]);
-
-    if (!job) return <p className="text-center mt-10">Loading...</p>;
+    if (!job){
+        return <div className="min-h-screen flex items-center justify-center">
+            <span className="loading loading-infinity text-[#fa4c4c] loading-xl w-[50px]"></span>
+        </div>
+    } 
 
  
 

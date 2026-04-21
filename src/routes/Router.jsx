@@ -12,11 +12,13 @@ import Jobdetails from "../component/Homepages/Jobdetails";
 import Mybids from "../pages/Mybids";
 import Owneraction from "../pages/Owneraction";
 import Privateroute from "./Privateroute";
+import ErorPage from "../component/shared/ErorPage";
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <Mainlayout/>,
+        errorElement: <ErorPage/>,
         children : [
             {
                 index : true,

@@ -7,15 +7,22 @@ const OwnerAction = () => {
     const axios = Useaxios();
     const { user } = useContext(Authcontext);
     const [bids, setBids] = useState([]);
-
     useEffect(() => {
         if (!user?.email) return;
-        const fetchBids = async () => {
-            const res = await axios.get(`/bidpost?buyer=${user.email}`); // all bids for this owner's jobs
-            setBids(res.data);
+
+        const fetchOwnerBids = async () => {
+            try {
+                // owner-bids endpoint ব্যবহার করুন
+                const res = await axios.get(`/bidpost/owner-bids?email=${user.email}`);
+                setBids(res.data);
+            } catch (error) {
+                console.error("Error fetching owner bids:", error);
+            }
         };
-        fetchBids();
+
+        fetchOwnerBids();
     }, [axios, user?.email]);
+
 
     const handleAccept = async (id) => {
         const res = await axios.put(`/bidpost/accept/${id}`);

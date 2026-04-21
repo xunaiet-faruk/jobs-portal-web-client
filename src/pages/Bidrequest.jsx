@@ -7,27 +7,37 @@ import Swal from "sweetalert2";
 const Bidrequest = ({ job, closeModal }) => {
     const {user} =use(Authcontext)
     const axios =Useaxios()
-    const handleForm =async(e)=>{
+
+    const handleForm = async (e) => {
         e.preventDefault()
-        const form =e.target;
-        const number =form.number.value;
-        const date =form.date.value;
-        const email =form.email.value;
-        const buyer =form.buyer.value;
-        const Alldata ={number,date,email,buyer}
-        const result = await axios.post('/bidpost',Alldata)
-         if (result.data.insertedId){
-                    Swal.fire({
-                        position: "top-left",
-                        icon: "success",
-                        title: "Your Jobs successfully Added",
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                    closeModal();
-                    form.reset()
-                }
-        
+        const form = e.target;
+        const number = form.number.value;
+        const date = form.date.value;
+        const email = form.email.value; 
+        const buyer = form.buyer.value; 
+
+        const Alldata = {
+            number,
+            date,
+            email,          
+            buyer,          
+            jobOwnerEmail: job.email, 
+            jobId: job._id,            
+            jobTitle: job.title         
+        }
+
+        const result = await axios.post('/bidpost', Alldata)
+        if (result.data.insertedId) {
+            Swal.fire({
+                position: "top-left",
+                icon: "success",
+                title: "Your Bid successfully Added",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            closeModal();
+            form.reset()
+        }
     }
     return (
 

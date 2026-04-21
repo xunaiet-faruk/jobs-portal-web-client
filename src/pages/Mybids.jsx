@@ -8,15 +8,32 @@ const MyBids = () => {
     const axios = Useaxios();
     const { user } = useContext(Authcontext);
     const [bids, setBids] = useState([]);
-
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         if (!user?.email) return;
-        const fetchBids = async () => {
-            const res = await axios.get(`/bidpost?email=${user.email}`); // only current user's bids
-            setBids(res.data);
+      
+        const fetchMyBids = async () => {
+            setLoading(true);
+            try {
+                // নতুন endpoint ব্যবহার করুন
+                const res = await axios.get(`/bidpost/my-bids?email=${user.email}`);
+                console.log("My bids data:", res.data);
+                setBids(res.data);
+            } catch (error) {
+                console.error("Error fetching my bids:", error);
+            } finally {
+                setLoading(false);
+            }
         };
-        fetchBids();
+
+        fetchMyBids();
     }, [axios, user?.email]);
+
+    if (loading) {
+        return <div className="min-h-screen flex items-center justify-center">
+            <span className="loading loading-infinity text-[#fa4c4c] loading-xl"></span>
+        </div>
+    }
 
     const handleComplete = async (id) => {
         const res = await axios.put(`/bidpost/complete/${id}`);
